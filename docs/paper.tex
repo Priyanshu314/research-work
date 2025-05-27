@@ -1,0 +1,124 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{cite}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+\title{LLMs for smart device}
+
+\newcommand{\linebreakand}{
+  \end{@IEEEauthorhalign}
+  \hfill\mbox{}\par
+  \mbox{}\hfill\begin{@IEEEauthorhalign}
+}
+
+\author{
+
+
+\IEEEauthorblockN{Akshat Srivastava}
+\IEEEauthorblockA{Department of DSAI \\
+International Institute of Information Technology\\
+Naya Raipur, Chhattisgarh\\
+hspace{}Email: akshat22102@iiitnr.edu.in}
+\and
+\IEEEauthorblockN{Debashish Padhy}
+\IEEEauthorblockA{Department of DSAI\\
+International Institute of Information Technology\\
+Naya Raipur, Chhattisgarh\\
+hspace{}Email: debashish22102@iiitnr.edu.in}
+
+\linebreakand
+\IEEEauthorblockN{Priyanshu Srivastava}
+\IEEEauthorblockA{Department of DSAI \\
+International Institute of Information Technology\\
+Naya Raipur, Chhattisgarh\\
+hspace{}Email: priyanshu22101@iiitnr.edu.in}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+hspace{}With the increasing adoption of smart home appliances, effective user-device interaction beyond basic controls has become a critical challenge. This research proposes an innovative AIoT-driven system that integrates Large Language Models (LLMs) with Internet of Things (IoT) devices, enabling them to communicate their real-time status and operational updates using natural language. This system addresses the limitations of traditional user interfaces by allowing devices, such as washing machines, refrigerators, and televisions, to proactively convey their current state, ongoing tasks, and diagnostic information in an intuitive manner. The methodology encompasses the development of a framework that leverages LLMs to interpret and generate responses based on user inputs, thereby enhancing user engagement and satisfaction. Our expected contributions include the establishment of a more interactive communication paradigm in smart homes, improved operational transparency of devices, and a reduction in user frustration associated with ambiguous error codes and alerts. Ultimately, this research aims to pave the way for smarter, more user-friendly home environments, significantly improving the quality of life for users.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+
+\end{IEEEkeywords}
+
+\section{Introduction}
+hspace{}Smart home technology has gained significant popularity in recent years due to its convenience and efficiency. One key component of smart homes is the gateway platform, which serves as a central hub for data collection and awareness \cite{r1}. To ensure the security of smart home systems, researchers have proposed supervised learning-based authentication frameworks \cite{r2}. Additionally, the design of smart built environments can be enhanced through the use of extended reality technologies, such as smart lighting design testbeds \cite{r3}. Middleware implementations in cloud-mobile ad hoc network (MANET) models have also been explored to support the connectivity of smart devices in the Internet of Things (IoT) ecosystem \cite{r4}. Furthermore, the development of intrusion detection systems specifically tailored for smart home IoT devices has been the focus of recent experimental studies \cite{r5}.
+
+\section{Literature Review}
+hspace{}The integration of Large Language Models (LLMs) in smart devices has gained attention as a method to enhance user interaction beyond conventional controls. The reviewed literature suggests a trend towards employing novel architectures, such as smart gateways and middleware, to facilitate seamless communication and data awareness among IoT devices. Emerging methodologies include secure frameworks for user-device authentication and advanced intrusion detection systems to address security risks. Although there are robust approaches targeting user comfort and security in smart home environments, a notable gap exists in the exploration of how LLMs can directly enhance real-time communication and diagnostics between devices and users.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}
+        \hline
+        \textbf{Reviewed Paper} & \textbf{Technique Used} & \textbf{Database Used} & \textbf{Accuracy Measures} & \textbf{Remarks} \\ \hline
+        A Smart Home Gateway Platform for Data Collection and Awareness & Smart Gateway Platform & Real data traffic & Efficiency and accuracy & Lightweight plug-in for smart gateway \\ \hline
+        Secure Supervised Learning-Based Smart Home Authentication Framework & SSL-SHAF & Not specified & Resistance against attacks & Improved security protocol proposed \\ \hline
+        Extended Reality for Smart Built Environments Design: Smart Lighting Design Testbed & Extended Reality & Controlled residential environment & User comfort evaluation & Focus on smart lighting design prototype \\ \hline
+        Middleware Implementation in Cloud-MANET Mobility Model for Internet of Smart Devices & Cloud-MANET & Not specified & Communication efficiency & Middleware for smart devices \\ \hline
+        Intrusion Detection Systems for Smart Home IoT Devices: Experimental Comparison Study & NIDS comparison study & Open-source IDSs & Detection accuracy, resource consumption & Suricata recommended for smart homes \\ \hline
+    \end{tabular}
+    \caption{Summary of Key Research Papers on Smart Devices and LLMs}
+    \label{tab:research_summary}
+\end{table}
+
+\section{Methodology}
+hspace{}The research methodology is structured to develop an AIoT-driven communication system that integrates LLMs with smart home devices through a well-defined communication pipeline. This pipeline will utilize MQTT protocol for real-time data exchange, enabling enhanced user interaction and operational transparency of smart devices. The methodology outlined below delineates the phases of the study: data collection, system architecture development, model design, and evaluation.
+
+1. **Data Collection**: 
+   The first step involves gathering real-time status updates, error signals, and usage patterns from a variety of smart home devices such as washing machines, refrigerators, and televisions. This data will be collected through MQTT, which facilitates efficient messaging between devices and servers. The devices will be configured to continuously publish their operational state, including diagnostics that indicate any issues. Additionally, a vector database comprising user manuals and device specifications will be established to serve as a knowledge base for the LLM. This database will ensure that the LLM has access to pertinent information when generating responses. The rationale for this step is to ensure that the system has access to the necessary context and factual data on which to base its natural language responses, thereby addressing the limitations identified in existing literature regarding real-time communication and diagnostics.
+
+2. **System Architecture Development**: 
+   The architecture will employ a combination of FastAPI as the backend processing framework and Twilio API for multi-platform messaging. FastAPI will facilitate the orchestration of incoming data from smart devices and communicate with the LLM for response generation. The use of the MQTT protocol will allow devices to publish and subscribe to topics relevant to their operational status. This modular setup is critical as it adheres to modern software design principles, ensuring scalability and maintainability while also enabling secure and efficient device interaction as indicated in the literature review. Moreover, incorporating multi-platform messaging capabilities will address users’ needs for seamless information delivery, enhancing engagement as resources from earlier studies suggest.
+
+3. **Model Design**: 
+   The core of the system will involve developing an LLM tailored for interpreting and generating human-readable responses based on the input received from the smart devices. Fine-tuning a pre-existing LLM, such as GPT-3, on the curated vector database will provide the necessary specificity for device diagnostics and user inquiries. The model will be trained to provide context-aware responses that address user questions and device statuses dynamically. This approach is justified as it leverages advances in NLP and aligns with trends noted in the literature concerning novel architectures and frameworks for improved data awareness in IoT ecosystems.
+
+4. **System Implementation and Integration**: 
+   Integration of the communication pipeline involving MQTT, FastAPI, and the LLM will be executed. Continuous testing will be performed to ensure that the system can handle real-time data flow and generate accurate, timely responses. The completed system will then be deployed in a controlled environment for further evaluation. The iterative development methodology will allow for adjustments based on user feedback and performance metrics captured during testing, thereby refining the user experience.
+
+5. **Evaluation**: 
+   The efficacy of the developed system will be evaluated through both qualitative and quantitative measures. User studies will be conducted to assess satisfaction levels and interaction quality, focusing on the clarity of communication provided by the system. Performance metrics will include response time, accuracy of the information relayed to users, and the system's ability to convey device diagnostics. Additionally, the framework's resilience against intrusions and security vulnerabilities will be assessed based on existing literature on smart home authentication protocols. This step is crucial in demonstrating that the system not only improves user engagement but also maintains a secure environment for data exchange, addressing significant concerns outlined in the literature review.
+
+6. **Outcome Analysis**: 
+   Finally, an analysis of the system's performance will be conducted, comparing user satisfaction before and after integrating the LLM-driven communication pipeline. This analysis will be anchored in the contributions and gaps identified in prior research, validating the proposed system's effectiveness in transforming user-device interactions within smart home settings.
+
+By structuring the methodology in these coherent stages, the research aims to bridge the identified gaps in existing techniques and move toward the desired outcome of creating a more interactive, transparent, and user-friendly smart home environment.
+
+\section{Results}
+
+
+\section{Conclusion}
+
+
+\begin{thebibliography}{99}
+
+\bibitem{r1}
+Wang, P., Ye, F., Chen, X. (2018). A smart home gateway platform for data collection and awareness. \textit{ArXiv}, \url{http://arxiv.org/abs/1804.01242v1}
+
+\bibitem{r2}
+Sudha, K. S., Jeyanthi, N., Iwendi, C. (2024). Secure supervised learning-based smart home authentication framework. \textit{ArXiv}, \url{http://arxiv.org/abs/2402.00568v1}
+
+\bibitem{r3}
+Mohammadrezaei, E., Gracanin, D. (2024). Extended reality for smart built environments design: Smart lighting design testbed. \textit{ArXiv}, \url{http://arxiv.org/abs/2405.06930v1}
+
+\bibitem{r4}
+Alsakran, F., Bendiab, G., Shiaeles, S., Kolokotronis, N. (2019). Middleware implementation in cloud-MANET mobility model for internet of smart devices. \textit{ArXiv}, \url{http://arxiv.org/abs/1902.09744v2}
+
+\bibitem{r5}
+(2021). Intrusion detection systems for smart home IoT devices: Experimental comparison study. \textit{ArXiv}, \url{http://arxiv.org/abs/2101.06519v1}
+
+\end{thebibliography}
+
+\end{document}
