@@ -1,0 +1,115 @@
+
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{cite}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    citecolor=blue,
+    urlcolor=blue
+}
+\title{A multi language legal ai assistant for law retrieval and document generation}
+
+\newcommand{\linebreakand}{
+  \end{@IEEEauthorhalign}
+  \hfill\mbox{}\par
+  \mbox{}\hfill\begin{@IEEEauthorhalign}
+}
+
+\author{
+
+
+\IEEEauthorblockN{Akshat Srivastava}
+\IEEEauthorblockA{Department of DSAI 
+\\International Institute of Information Technology
+\\Naya Raipur, Chhattisgarh
+\\Email: akshat22102@iiitnr.edu.in}
+\and
+\IEEEauthorblockN{Debashish Padhy}
+\IEEEauthorblockA{Department of DSAI
+\\International Institute of Information Technology
+\\Naya Raipur, Chhattisgarh
+\\Email: debashish22102@iiitnr.edu.in}
+
+\linebreakand
+\IEEEauthorblockN{Priyanshu Srivastava}
+\IEEEauthorblockA{Department of DSAI 
+\\International Institute of Information Technology
+\\Naya Raipur, Chhattisgarh
+\\Email: priyanshu22101@iiitnr.edu.in}
+}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\hspace{}The increasing complexity of legal queries demands innovative solutions to enhance the efficiency of legal information retrieval and document generation. This research introduces a multi-language legal AI assistant that leverages advanced techniques in natural language processing, specifically through the conversion of user queries into vector embeddings for precise legal document retrieval. Utilizing FAISS (Facebook AI Similarity Search) for seamless access to relevant laws and case law, the proposed framework employs prompt engineering to create contextually aware prompts that integrate retrieved information with user queries, ensuring high relevance and accuracy. The assistant then generates legal responses using the open-source LLM Llama Versatile, with a unique focus on multilingual capabilities facilitated by the Google Translate API. Our approach draws on findings from recent studies which highlight the effectiveness of structured legal document generation tools and the need for reliable AI systems in legal contexts, as evidenced by advancements in models like Legal Assist AI, CaseEncoder, and SAILER. By synthesizing these insights, the present work aims to offer a comprehensive solution that not only maintains factual accuracy and coherence but also reduces the occurrence of AI hallucinations in legal document generation. Ultimately, this research seeks to empower users with accessible and reliable legal resources, enhancing engagement with their legal rights across multiple languages.
+
+\end{abstract}
+
+\begin{IEEEkeywords}
+
+\end{IEEEkeywords}
+
+\section{Introduction}
+hspace{}Legal document generation in India has seen advancements in recent years with the development of new technologies such as VidhikDastaavej, a model-agnostic wrapper approach \cite{r1}. Additionally, the use of Transformer-based models like Legal Assist AI has shown promise in providing effective legal assistance \cite{r2}. These technologies are complemented by knowledge-enhanced pre-trained models such as CaseEncoder, which aids in legal case encoding \cite{r3}. However, it is crucial to assess the reliability of AI legal research tools like Hallucination-Free to ensure accurate results \cite{r4}. Furthermore, the development of structure-aware pre-trained language models like SAILER has improved legal case retrieval processes \cite{r5}.
+
+\section{Literature Review}
+\hspace{}The literature on AI-assisted legal systems primarily focuses on document generation, case retrieval, and the mitigation of hallucinations in AI outputs. Recent models leverage transformer-based architectures and domain-specific datasets to enhance the efficiency and accuracy of legal information retrieval and document generation. Approaches like retrieval-augmented generation and structure-aware models demonstrate significant improvements in coherence and factual correctness. Notably, a common challenge across studies is the persistence of hallucinations, raising concerns about the reliability of AI-generated legal content. Future works aim to address these limitations while expanding multilingual support.
+
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|p{1.3cm}|}
+\hline
+\textbf{Reviewed Paper} & \textbf{Technique Used} & \textbf{Database Used} & \textbf{Accuracy Measures} & \textbf{Remarks} \\
+\hline
+Structured Legal Document Generation in India: A Model-Agnostic Wrapper Approach with VidhikDastaavej & Fine-tuned LLM & VidhikDastaavej & Human evaluations & Focus on Indian legal texts and structured generation; HITL system developed. \\
+\hline
+Legal Assist AI: Leveraging Transformer-Based Model for Effective Legal Assistance & Transformer-based model & Indian legal documents & 60.08% on AIBE & Highly reliable, effective for diverse user queries with minimized hallucinations. \\
+\hline
+CaseEncoder: A Knowledge-enhanced Pre-trained Model for Legal Case Encoding & Legal document encoder & Legal case documents & Enhanced retrieval performance & Utilizes legal knowledge for better data sampling and task alignment. \\
+\hline
+Hallucination-Free? Assessing the Reliability of Leading AI Legal Research Tools & Empirical evaluation & RAG-based tools & 17% to 33% hallucination rates & First to evaluate proprietary AI tools; highlights variability in accuracy among systems. \\
+\hline
+SAILER: Structure-aware Pre-trained Language Model for Legal Case Retrieval & Structure-aware model & Public legal benchmarks & State-of-the-art performance & Effective in distinguishing legal cases; integrates multiple pre-training tasks. \\
+\hline
+\end{tabular}
+\caption{Summary of Reviewed Studies on AI in Legal Assistance}
+\end{table}
+
+\section{Methodology}
+\hspace{}The methodology for developing a multi-language legal AI assistant involves several interrelated stages that integrate data handling, processing, model design, and evaluation. Each step is critical to ensuring that the system effectively addresses legal information retrieval and document generation in a reliable and coherent manner.\\\\The first step is **data collection**, which entails gathering a comprehensive dataset of legal texts, statutes, regulations, and case law from various jurisdictions. This dataset may include public legal documents, legal encyclopedias, and court rulings, ensuring representation across multiple languages to facilitate multilingual support. Drawing from recent models like Legal Assist AI and CaseEncoder, datasets should be curated to focus on domain-specific information that enhances retrieval performance and factual accuracy (as identified in the literature review). \\\\Following the collection of the dataset, **data preprocessing** will be performed to clean and structure the data for effective use in the AI system. This includes tokenization, normalization, and language identification (to support multilingual inputs). It is essential to ensure that the text is free of anomalies and that all documents are formatted uniformly, which aligns with the approach taken in other models that utilize transformer-based architectures to enhance textual coherence and reduce hallucinations (referenced in the literature review).\\\\The next phase is **embedding generation** where user queries, entered in natural language, are transformed into vector embeddings. This will be accomplished using techniques such as sentence embedding models to accurately represent the semantic meaning of the queries. These embeddings will serve as queries into the vector database, FAISS (Facebook AI Similarity Search), which allows for high-dimensional similarity searches to retrieve relevant laws and case law efficiently. The use of FAISS here is justified by its demonstrated capability to handle large datasets with optimal performance, essential for real-time legal information retrieval.\\\\Following the retrieval stage, we will engage in **prompt engineering**. This involves creating detailed context-aware prompts that integrate both the user query and the documents retrieved from the FAISS database. The construction of these prompts requires careful consideration to ensure that they adequately contextualize the retrieved information and maintain user intent. As established by prior studies, effective prompt engineering is critical to improving the performance of language models in generating contextually relevant outputs.\\\\The central component of the proposed methodology will be **response generation** using the open-source LLM, Llama Versatile. The LLM will process the engineered prompts and generate coherent and contextually appropriate legal documents. This inclusion of Llama Versatile is warranted due to its flexibility with multilingual outputs, providing an opportunity to create legal documentation in languages that cater to diverse user needs. \\\\To enable multilingual capabilities, we will integrate the **Google Translate API**, allowing for real-time translation of both user queries and generated legal documents. This will ensure that language barriers do not obstruct access to legal information. The effectiveness of this approach has been apparent in addressing the limitations noted in previous research regarding the need for reliable AI systems that can cater to a global audience.\\\\Finally, the methodology will include a rigorous **evaluation framework** to assess the system's performance. Key metrics will involve accuracy and coherence of the generated documents, as well as a quantifiable reduction in AI hallucination rates. Human evaluations will be conducted to validate the output quality, mirroring the evaluation strategies from existing literature that emphasize the importance of generating reliable legal content.\\\\Through these meticulously structured steps, the proposed multi-language legal AI assistant aims to empower users by providing them with accessible, relevant, and reliable legal resources, thus enhancing engagement with their legal rights across multiple languages and jurisdictions.
+
+\section{Results}
+
+
+\section{Conclusion}
+
+
+\begin{thebibliography}{99}
+
+\bibitem{r1}
+Nigam, S. K., Patnaik, B. D., Thomas, A. V., Shallum, N., Ghosh, K., et al. (2025). Structured legal document generation in India: A model-agnostic wrapper approach with VidhikDastaavej. \textit{arXiv}, \textbf{2504.03486v1}. 
+\url{http://arxiv.org/abs/2504.03486v1}
+
+\bibitem{r2}
+Gupta, J., Sharma, A., Singhania, S., Abidi, A. I. (2025). Legal assist AI: Leveraging transformer-based model for effective legal assistance. \textit{arXiv}, \textbf{2505.22003v1}. 
+\url{http://arxiv.org/abs/2505.22003v1}
+
+\bibitem{r3}
+Ma, Y., Wu, Y., Su, W., Ai, Q., Liu, Y. (2023). Caseencoder: A knowledge-enhanced pre-trained model for legal case encoding. \textit{arXiv}, \textbf{2305.05393v1}. 
+\url{http://arxiv.org/abs/2305.05393v1}
+
+\bibitem{r4}
+Magesh, V., Surani, F., Dahl, M., Suzgun, M., Manning, C. D., Ho, D. E. (2024). Hallucination-free? Assessing the reliability of leading AI legal research tools. \textit{arXiv}, \textbf{2405.20362v1}. 
+\url{http://arxiv.org/abs/2405.20362v1}
+
+\bibitem{r5}
+Li, H., Ai, Q., Chen, J., Dong, Q., Wu, Y., Liu, Y., Chen, C., Tian, Q. (2023). SAILER: Structure-aware pre-trained language model for legal case retrieval. \textit{arXiv}, \textbf{2304.11370v1}. 
+\url{http://arxiv.org/abs/2304.11370v1}
+
+\end{thebibliography}
+
+\end{document}
